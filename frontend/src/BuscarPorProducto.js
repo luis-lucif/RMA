@@ -7,6 +7,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import { Link } from 'react-router-dom';
 
 function BuscarPorProducto() {
   const [producto, setProducto] = useState(null);
@@ -31,7 +32,7 @@ function BuscarPorProducto() {
     try {
       const respuesta = await axios.get('http://127.0.0.1:8000/api/clientes/', {
         params: {
-          producto: producto ? producto.id : null, // Envía el ID del producto seleccionado
+          producto: producto ? producto.id : null, 
         }
       });
       setResultados(respuesta.data);
@@ -46,7 +47,7 @@ function BuscarPorProducto() {
         disablePortal
         id="combo-box-demo"
         options={productos}
-        getOptionLabel={(option) => option.modelo} // Asegúrate de que 'modelo' es el nombre correcto del campo
+        getOptionLabel={(option) => option.modelo} 
         value={producto}
         onChange={(event, newValue) => {
           setProducto(newValue);
@@ -66,6 +67,11 @@ function BuscarPorProducto() {
                 primary={cliente.nombre_completo}
                 secondary={cliente.telefono}
               />
+              <Link to={`/detalle-cliente/${cliente.id}`}> {/* Enlace al detalle del cliente */}
+                <Button variant="contained" color="primary">
+                  DETALLE
+                </Button>
+              </Link>
             </ListItem>
             <Divider />
           </React.Fragment>

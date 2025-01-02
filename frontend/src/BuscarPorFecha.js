@@ -7,6 +7,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import { Link } from 'react-router-dom';
 
 function BuscarPorFecha() {
   const [fecha, setFecha] = useState(new Date());
@@ -14,7 +15,7 @@ function BuscarPorFecha() {
 
   const handleBuscar = async () => {
     // Formatea la fecha a YYYY-MM-DD
-    const fechaFormateada = fecha.toISOString().split('T')[0]; 
+    const fechaFormateada = fecha.toISOString().split('T')[0];
 
     try {
       const respuesta = await axios.get('http://127.0.0.1:8000/api/clientes/', {
@@ -44,6 +45,11 @@ function BuscarPorFecha() {
                 primary={cliente.nombre_completo}
                 secondary={cliente.telefono}
               />
+              <Link to={`/detalle-cliente/${cliente.id}`}> {/* Enlace al detalle del cliente */}
+                <Button variant="contained" color="primary">
+                  DETALLE
+                </Button>
+              </Link>
             </ListItem>
             <Divider />
           </React.Fragment>

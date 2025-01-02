@@ -6,6 +6,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import { Link } from 'react-router-dom';
 
 function BuscarPorTelefono() {
   const [telefono, setTelefono] = useState('');
@@ -51,6 +52,11 @@ function BuscarPorTelefono() {
                 primary={cliente.nombre_completo}
                 secondary={cliente.telefono}
               />
+              <Link to={`/detalle-cliente/${cliente.id}`}>
+                <Button variant="contained" color="primary">
+                  DETALLE
+                </Button>
+              </Link>
             </ListItem>
             <Divider />
           </React.Fragment>

@@ -45,20 +45,7 @@ function BuscarPorNombre() {
       </Button>
 
       {/* Mostrar los resultados de la búsqueda */}
-      <List>
-        {resultados.map(cliente => (
-          <React.Fragment key={cliente.id}>
-            <ListItem>
-              <ListItemText
-                primary={cliente.nombre_completo}
-                secondary={cliente.telefono}
-              />
-            </ListItem>
-            <Divider />
-          </React.Fragment>
-        ))}
-      </List>
-
+     
       <List>
         {resultados.map(cliente => (
           <React.Fragment key={cliente.id}>

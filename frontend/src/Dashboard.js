@@ -11,6 +11,7 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
 import SearchIcon from "@mui/icons-material/Search";
+import BuildIcon from '@mui/icons-material/Build'; // Importa el icono para "Estado"
 import FormularioCliente from "./FormularioCliente";
 
 // Importa los componentes para cada tipo de búsqueda
@@ -47,6 +48,8 @@ function Dashboard() {
   const [mostrarBusquedaFecha, setMostrarBusquedaFecha] = useState(false);
   const [mostrarBusquedaProducto, setMostrarBusquedaProducto] = useState(false);
   const [openBusqueda, setOpenBusqueda] = useState(false);
+  // Estado para controlar el submenú de "Estado"
+  const [openEstado, setOpenEstado] = useState(false);
 
   const handleAgregarCliente = () => {
     setMostrarFormulario(true);
@@ -58,6 +61,10 @@ function Dashboard() {
 
   const handleClickBusqueda = () => {
     setOpenBusqueda(!openBusqueda);
+  };
+
+  const handleClickEstado = () => {
+    setOpenEstado(!openEstado);
   };
 
   const handleClienteAgregado = (nuevoCliente) => {
@@ -164,6 +171,37 @@ function Dashboard() {
                   <StarBorder />
                 </ListItemIcon>
                 <ListItemText primary="Buscar por producto" />
+              </ListItem>
+            </List>
+          </Collapse>
+          {/* Estado con submenú */}
+          <ListItem button onClick={handleClickEstado}>
+            <ListItemIcon>
+              <BuildIcon /> {/* Icono para "Estado" */}
+            </ListItemIcon>
+            <ListItemText primary="Estado" />
+            {openEstado ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={openEstado} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {/* Submenú con opciones de estado */}
+              <ListItem button className={classes.nested} onClick={() => { /* Lógica para buscar por estado "En reparación" */ }}>
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText primary="En reparación" />
+              </ListItem>
+              <ListItem button className={classes.nested} onClick={() => { /* Lógica para buscar por estado "Terminado" */ }}>
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText primary="Terminado" />
+              </ListItem>
+              <ListItem button className={classes.nested} onClick={() => { /* Lógica para buscar por estado "Para retirar" */ }}>
+                <ListItemIcon>
+                  <StarBorder />
+                </ListItemIcon>
+                <ListItemText primary="Para retirar" />
               </ListItem>
             </List>
           </Collapse>
