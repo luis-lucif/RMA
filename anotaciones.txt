@@ -8,31 +8,22 @@ iniciar django
 
 /////////////////////////////////////////////////////
 
-SUBIR LA CARPETA DE FRONTED A GitHub
-
-cd frontend
-Agrega los cambios al submódulo:
-
-
-
+…or create a new repository on the command line
+echo "# test" >> README.md
+git init
+git add README.md
 git add .
-git commit -m "Actualizar frontend"
-Vuelve al directorio principal:
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/luis-lucif/test.git
+git push -u origin main
 
 
 
-cd ..
-Agrega los cambios del submódulo al repositorio principal:
-
-
-git add frontend
-Haz commit en el repositorio principal:
-
-
-git commit -m "Actualizar submódulo frontend"
-Sube los cambios a GitHub:
-
-git push
+…or push an existing repository from the command line
+git remote add origin https://github.com/luis-lucif/test.git
+git branch -M main
+git push -u origin main
 
 
 ////////////////////////////////////////////////////////////

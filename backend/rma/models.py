@@ -8,8 +8,9 @@ class Cliente(models.Model):
     foto_producto = models.ImageField(upload_to='fotos_productos/', blank=True, null=True)  # Guarda directamente en 'fotos_productos/'
     observaciones = models.TextField(blank=True)
     producto = models.ForeignKey('Producto', on_delete=models.SET_NULL, null=True, blank=True)  # Relación con el modelo Producto
+    fecha_ingreso = models.DateTimeField(auto_now_add=True)  # Agrega este campo si no lo tienes
 
-    
+
     def __str__(self):
         return self.nombre_completo
 
